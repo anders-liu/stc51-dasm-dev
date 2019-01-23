@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "outDir": "../../../out/tsc/ui/",
+        "module": "commonjs",
+        "lib": ["es6", "dom"],
+        "jsx": "react",
+        "strict": true,
+        "removeComments": true,
+        "sourceMap": true
+    },
+    "include": [
+        "**/*.tsx",
+        "**/*.ts"
+    ]
+}

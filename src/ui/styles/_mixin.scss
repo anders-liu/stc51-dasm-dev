@@ -1,0 +1,15 @@
+@import "var";
+
+@mixin txt-normal {
+    font-family: $font-text;
+    font-weight: $font-w-reg;
+}
+
+@mixin txt-bold {
+    font-family: $font-text;
+    font-weight: $font-w-bold;
+}
+
+@mixin txt-code {
+    font-family: $font-mono;
+}

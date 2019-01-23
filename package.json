@@ -1,0 +1,50 @@
+{
+    "name": "stc51-dasm-dev",
+    "title": "STC51反汇编器",
+    "description": "Development working space of [stc51-dasm.net](https://github.com/anders-liu/stc51-dasm).",
+    "version": "0.1.0",
+    "author": "Anders Liu",
+    "license": "MIT",
+    "homepage": "https://github.com/anders-liu/stc51-dasm#readme",
+    "bugs": {
+        "url": "https://github.com/anders-liu/stc51-dasm-dev/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/anders-liu/stc51-dasm-dev.git"
+    },
+    "release-notes": {
+        "url": "https://github.com/anders-liu/stc51-dasm/blob/master/RELEASES.md"
+    },
+    "keywords": [
+        "STC",
+        "STCMCU",
+        "8051"
+    ],
+    "scripts": {
+        "build": "gulp",
+        "start": "pushd .\\out\\dist & start http-server -p 8051 & popd & start http://localhost:8051/dev"
+    },
+    "devDependencies": {
+        "@types/react": "^16.3.17",
+        "@types/react-dom": "^16.0.6",
+        "@types/react-redux": "^5.0.20",
+        "@types/redux": "^3.6.31",
+        "gulp": "^4.0.0",
+        "gulp-cli": "^2.0.1",
+        "gulp-file": "^0.4.0",
+        "gulp-replace": "^0.6.1",
+        "gulp-sass": "^4.0.1",
+        "gulp-sourcemaps": "^2.6.4",
+        "hoek": "^5.0.3",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0",
+        "react-redux": "^5.0.7",
+        "redux": "^3.7.2",
+        "ts-loader": "^4.4.1",
+        "typescript": "^2.9.1",
+        "webpack": "^4.12.0",
+        "webpack-cli": "^3.2.1",
+        "webpack-stream": "^4.0.3"
+    }
+}

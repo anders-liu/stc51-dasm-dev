@@ -1,0 +1,164 @@
+@import "var";
+@import "mixin";
+
+body, input, select, th {
+    @include txt-normal;
+
+    color: $color-txt;
+    font-size: $size-txt-mid;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    display: grid;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+}
+
+#app-header {
+    color: $color-txt-lt;
+    background: $color-bg-dk;
+    padding: $size-pad-lg;
+
+    h1 {
+        margin: $size-pad-mid 0;
+    }
+}
+
+#app-footer {
+    color: $color-txt-lt;
+    background: $color-bg-dk;
+    padding: $size-pad-lg;
+    white-space: nowrap;
+    font-size: $size-txt-sm;
+
+    a {
+        color: $color-txt-lt;
+    }
+
+    &>div {
+        display: inline-block;
+        vertical-align: baseline;
+
+        &:not(:first-child) {
+            margin-left: 2 * $size-pad-lg;
+        }
+
+        &>strong {
+            font-size: $size-txt-mid-lg;
+        }
+    }
+}
+
+#app-content {
+    overflow: auto;
+    padding: $size-pad-lg;
+}
+
+#file-opener {
+    margin-bottom: $size-pad-lg;
+}
+
+#view-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: $size-pad-lg;
+}
+
+#hex-view {
+    .hex-line-number {
+        background-color: $color-header;
+    }
+
+    .hex-start {
+        background-color: $color-theme-61;
+    }
+
+    .hex-count {
+        background-color: $color-theme-41;
+    }
+
+    .hex-address {
+        background-color: $color-theme-21;
+    }
+
+    .hex-type {
+        background-color: $color-theme-31;
+    }
+
+    .hex-data {
+        background-color: $color-data;
+
+        &>span:not(:first-child){
+            margin-left: $size-pad-mid;
+        }
+    }
+
+    .hex-checksum {
+        background-color: $color-theme-21;
+    }
+
+    .hex-error {
+        background-color: $color-err-bg;
+    }
+}
+
+#db-view {
+    .db-gap {
+        background-color: $color-header;
+    }
+
+    .db {
+        background-color: $color-data;
+    }
+}
+
+#asm-view {
+    .asm-label, .asm-jmp-target {
+        background-color: $color-theme-62;
+    }
+
+    .asm-addr {
+        background-color: $color-header;
+    }
+
+    .asm-db {
+        background-color: $color-header;
+
+        &>span:not(:first-child){
+            margin-left: $size-pad-mid;
+        }
+    }
+
+    .asm-opcode {
+        background-color: $color-theme-31;
+    }
+
+    .asm-oprand {
+        background-color: $color-data;
+    }
+
+    .asm-jmp-target {
+        cursor: pointer;
+    }
+}
+
+.code {
+    @include txt-code;
+    white-space: nowrap;
+}
+
+.table-header-h {
+    background-color: $color-header;
+    text-align: right;
+}
+
+.table-header-v {
+    background-color: $color-header;
+    text-align: center;
+    vertical-align: bottom;
+}
