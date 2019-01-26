@@ -35,6 +35,7 @@ body, input, select, th {
     padding: $size-pad-lg;
     white-space: nowrap;
     font-size: $size-txt-sm;
+    line-height: 24px;
 
     a {
         color: $color-txt-lt;
@@ -48,10 +49,25 @@ body, input, select, th {
             margin-left: 2 * $size-pad-lg;
         }
 
+        &.right {
+            float: right;
+        }
+
         &>strong {
             font-size: $size-txt-mid-lg;
         }
     }
+}
+
+#donation-prompt {
+    position: fixed;
+    right: $size-pad-lg;
+    bottom: 60px;
+    width: 155px;
+    color: $color-bg-dk;
+    background: $color-txt-lt;
+    padding: $size-pad-lg $size-pad-lg+2;
+    border-radius: $size-pad-lg+2;
 }
 
 #app-content {

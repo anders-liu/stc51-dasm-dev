@@ -10,6 +10,8 @@ export interface AppState {
     asmView?: AsmView;
 }
 
+export type PageIdType = "MAIN" | "DONATE";
+
 export interface AppInfo {
     title: string;
     version: string;
@@ -19,6 +21,7 @@ export interface AppInfo {
     releaseNotesUrl: string;
     buildTimeLocal: string;
     year: string;
+    pageId: PageIdType;
 }
 
 export interface FileInfo {

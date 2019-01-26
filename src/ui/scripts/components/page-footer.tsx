@@ -17,7 +17,8 @@ function mapStateToProps(state: S.AppState): ConnectedProps {
 class PageFooterClass extends React.Component<ConnectedProps> {
     public render(): JSX.Element {
         const { appInfo } = this.props;
-        const { title, version, author, homepage, bugsUrl, releaseNotesUrl, buildTimeLocal, year } = appInfo;
+        const { title, version, author, homepage, bugsUrl, releaseNotesUrl, buildTimeLocal, year, pageId } = appInfo;
+        const showDonate = pageId !== "DONATE";
 
         return (
             <footer id="app-footer">
@@ -29,6 +30,9 @@ class PageFooterClass extends React.Component<ConnectedProps> {
                 <div><a href="/latest" target="_blank">尝试新版</a></div>
                 <div><a href={homepage} target="_blank">GitHub</a></div>
                 <div><a href={bugsUrl} target="_blank">报bug</a></div>
+                {showDonate && (
+                    <div className="right"><a href={"?donate"} target="_blank">资助作者</a></div>
+                )}
             </footer>
         )
     }

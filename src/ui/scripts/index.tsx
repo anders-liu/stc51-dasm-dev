@@ -19,6 +19,7 @@ const appInfo: S.AppInfo = {
     releaseNotesUrl: packageJson.release_notes,
     buildTimeLocal: new Date(Date.parse(packageJson.build_time)).toLocaleString(),
     year: new Date().getFullYear().toString(),
+    pageId: document.location.search === "?donate" ? "DONATE" : "MAIN"
 };
 
 const defaultState: S.AppState = {
@@ -26,12 +27,6 @@ const defaultState: S.AppState = {
 };
 
 document.title = `${appInfo.title}`;
-window.addEventListener("beforeunload", (evt) =>{
-    if(!window.confirm("即将离开此页面，打开的文件将丢失。确定离开吗？")) {
-        evt.preventDefault();
-        evt.returnValue = "";
-    }
-});
 
 const _w = window as any;
 const composeEnhancers = _w.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || Redux.compose;
@@ -41,7 +36,9 @@ const store = Redux.createStore(R.appReducer, defaultState, composeEnhancers(
         workerClientMiddleware)
 ));
 
-initWorkerClient(store);
+if (appInfo.pageId === "MAIN") {
+    initWorkerClient(store);
+}
 
 ReactDOM.render(
     <ReactRedux.Provider store={store}>

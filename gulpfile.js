@@ -12,6 +12,10 @@ const task_html = done => {
     build_html();
     done();
 }
+const task_images = done => {
+    build_images();
+    done();
+}
 const task_gen_package_json = done => {
     gen_package_json();
     done();
@@ -34,11 +38,23 @@ const task_copy_release_note = done => {
     done();
 }
 
-exports.default = gulp.parallel(task_html, task_ui, task_styles, task_worker, task_copy_release_note);
+exports.default = gulp.parallel(
+    task_html,
+    task_images,
+    task_ui,
+    task_styles,
+    task_worker,
+    task_copy_release_note);
 
 function build_html() {
     return gulp
         .src(PATH_SRC_HTML + "index.html")
+        .pipe(gulp.dest(PATH_OUT));
+}
+
+function build_images() {
+    return gulp
+        .src(PATH_SRC_IMG + "*")
         .pipe(gulp.dest(PATH_OUT));
 }
 
@@ -92,6 +108,7 @@ function copy_release_note() {
 
 const PATH_SRC = "./src/";
 const PATH_SRC_HTML = PATH_SRC + "ui/html/";
+const PATH_SRC_IMG = PATH_SRC + "ui/images/";
 const PATH_SRC_UI = PATH_SRC + "ui/scripts/";
 const PATH_SRC_WORKER = PATH_SRC + "worker/";
 const PATH_SRC_STYLES = PATH_SRC + "ui/styles/";
