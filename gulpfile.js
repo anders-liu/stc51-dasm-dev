@@ -1,12 +1,12 @@
 const path = require("path");
 
 const gulp = require("gulp");
-const replace = require("gulp-replace");
 const webpack = require("webpack");
 const ws = require("webpack-stream");
 const file = require("gulp-file");
 const sass = require("gulp-sass");
 const sourcemaps = require("gulp-sourcemaps");
+const merge = require('merge-stream');
 
 const task_html = done => {
     build_html();
@@ -24,7 +24,11 @@ const task_ui_script = done => {
     build_scripts(PATH_SRC_UI);
     done();
 }
-const task_ui = gulp.series(task_gen_package_json, task_ui_script);
+const task_react_scripts = done => {
+    copy_react_scripts();
+    done();
+}
+const task_ui = gulp.series(task_gen_package_json, task_ui_script, task_react_scripts);
 const task_styles = done => {
     build_styles();
     done();
@@ -104,6 +108,15 @@ function copy_release_note() {
     return gulp
         .src("./RELEASES.md")
         .pipe(gulp.dest(PATH_OUT));
+}
+
+function copy_react_scripts() {
+    return merge(
+        gulp.src("./node_modules/react/umd/react.production.min.js"),
+        gulp.src("./node_modules/react-dom/umd/react-dom.production.min.js"),
+        gulp.src("./node_modules/redux/dist/redux.min.js"),
+        gulp.src("./node_modules/react-redux/dist/react-redux.min.js")
+    ).pipe(gulp.dest(PATH_OUT));
 }
 
 const PATH_SRC = "./src/";
